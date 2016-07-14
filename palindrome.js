@@ -1,3 +1,9 @@
+/***
+ * 
+ *  Think Big-O Notation
+ * 
+ *  */
+
 var array = [
     "A man, a plan, a canal, Panama!",
     "Amor, Roma",
@@ -46,13 +52,11 @@ function formatString(string) {
     return string;
 }
 
-function isDefined(number) {
-    return (typeof number !== 'undefined');
-}
-
-function defaults(number, value) {
-    if (!isDefined(number)) { return value }
-    return number;
+function getFloor(array, number) {
+    if (typeof number === 'number') {
+        return Math.floor( array.length / number );
+    }
+    return Math.floor(array.length / 2);
 }
 
 function sliceFirst(array, number) {
@@ -63,12 +67,6 @@ function sliceLast(array, number) {
     return array.slice(-(getFloor(array)));
 }
 
-function getFloor(array, number) {
-    if (typeof number === 'number') {
-        return Math.floor(array.length / number);
-    }
-    return Math.floor(array.length / 2);
-}
 
 function compare4(array, number) {
     var start = array.slice(0, number).toString();
@@ -83,7 +81,7 @@ function compare4(array, number) {
 
     if ( start === end ) {
         console.log('Match');
-        
+
         if ( array.length >= (number * 2) ) {
             compare4(array, number);
         } else if ( array.length >= 2 && number >= 2){
@@ -141,35 +139,35 @@ function compare1(array) {
 
 function compare(array) {
 
-    // console.log('COMPARE 1');
+    console.log('COMPARE 1');
     var arrayCopy = array.slice();
-    // console.log( compare1( arrayCopy ) );
+    console.log( compare1( arrayCopy ) );
 
-    // console.log('COMPARE 2');
+    console.log('COMPARE 2');
     var arrayCopy = array.slice();
-    // console.log( compare2( arrayCopy ) );
+    console.log( compare2( arrayCopy ) );
 
-    // console.log('COMPARE 3');
+    console.log('COMPARE 3');
     var arrayCopy = array.slice();
-    // console.log( compare3( arrayCopy ) );
+    console.log( compare3( arrayCopy ) );
 
-    // console.log('COMPARE 4');
+    console.log('COMPARE 4');
     var arrayCopy = array.slice();
-    console.log(compare4(arrayCopy, 2));
+    console.log( compare4(arrayCopy, 2) );
 
     console.log('COMPARE 5');
     var arrayCopy = array.slice();
-    // console.log(compare4(arrayCopy, 4));
+    console.log( compare4(arrayCopy, 4) );
 
-    return true;
+    return compare1( arrayCopy );
 }
 
-function format(string) {
+function format(string, index) {
     string = formatString(string);
-    console.log("Formatted: " + string);
     string = compare(string);
-    console.log(string);
-    return string;
+    array[index] = string;
 }
 
 array.map(format);
+
+console.log(array);
